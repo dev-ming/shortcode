@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main(void) 
+{
+    float row_sum, total_sum = 0;
+    float row_avrg = 0;
+    float total_avrg = 0;
+    float col_sum[5] = { 0, };
+    float col_avrg[5] = { 0, };
+    double a[5][5] = {{ 1.0, 6.0, 11.0, 16.0, 21.0 },
+		      { 2.0, 7.0, 12.0, 17.0, 22.0 },
+ 		      { 3.0, 8.0, 13.0, 18.0, 23.0 },
+		      { 4.0, 9.0, 14.0, 19.0, 24.0 },
+ 		      { 5.0, 10.0, 15.0, 20.0, 25.0 }};
+
+    for (int i = 0; i < 5; i++) {
+        row_sum = 0;
+        row_avrg = 0;
+        for (int j = 0; j < 5; j++) {
+            printf("%.2f ", a[i][j]);
+            row_sum += a[i][j];
+            col_sum[j] += a[i][j];
+        }
+        row_avrg = row_sum / 5;
+        printf(" %.2f %.2f ", row_sum, row_avrg);
+        total_sum += row_sum;
+        printf("\n");
+    }
+    printf("\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%.2f ", col_sum[i]);
+    }
+    printf("%.2f\n", total_sum);
+    for (int i = 0; i < 5; i++) {
+        col_avrg[i] = col_sum[i] / 5;
+        printf("%.2f ", col_avrg[i]);
+    }
+    
+    total_avrg = total_sum / 25;
+    printf("       %.2f\n", total_avrg);
+
+    return 0;
+}
